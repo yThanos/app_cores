@@ -69,7 +69,7 @@ class _homePageState extends State<homePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.question_mark),
-            label: "Sobre nós"
+            label: "Sobre o app"
           )
         ],
         currentIndex: _selectedIndex,
