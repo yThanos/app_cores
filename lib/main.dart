@@ -5,6 +5,6 @@ import 'package:tcc_bianca/pages/home.dart';
 void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: homePage(),
+    home: HomePage(),
   ));
 }
