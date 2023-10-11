@@ -12,8 +12,7 @@ class Teste extends StatefulWidget {
 }
 
 class _TesteState extends State<Teste> {
-
-  Color _appBarColor = const Color(0xff443a49);
+  Color _appBarColor = Colors.grey;
   Color _appBarIconColor = Colors.white;
   Color _boxColor = Colors.white;
   Color _boxIconColor = Colors.black;
@@ -34,12 +33,39 @@ class _TesteState extends State<Teste> {
   bool _corFundo = false;
   bool _corIcon = false;
   File? _userImage;
+  File? _card1Image;
+  File? _card2Image;
+  Color _card1 = Colors.white;
+  Color _card2 = Colors.white;
+  String _card1Titulo = "Titulo";
+  String _card1Subtitulo = "Subtitulo";
+  String _card2Titulo = "Titulo";
+  String _card2Subtitulo = "Subtitulo";
+
 
   _getFromGallery() async {
     XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         _userImage = File(pickedFile.path);
+      });
+    }
+  }
+
+  _getCard1() async {
+    XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _card1Image = File(pickedFile.path);
+      });
+    }
+  }
+
+  _getCard2() async {
+    XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _card2Image = File(pickedFile.path);
       });
     }
   }
@@ -58,49 +84,51 @@ class _TesteState extends State<Teste> {
         child: Column(
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.1,
-                  child: IconButton(
-                    icon: Icon(Icons.brush, color: _backGroundIconColor),
-                    onPressed: (){
-                      showDialog(context: context, builder: (context){
-                        return AlertDialog(
-                          actions: [
-                            ElevatedButton(
-                                onPressed: (){
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text("Ok")
-                            )
-                          ],
-                          title: const Text("Escolha cor do fundo"),
-                          content: SingleChildScrollView(
-                            child: ColorPicker(
-                                pickerColor: _backGroundColor,
-                                onColorChanged: (change){
-                                  var luminosidade = (change.red * 299 + change.green * 587 + change.blue * 114) / 1000;
-                                  if(luminosidade > 127){
-                                    _backGroundIconColor = Colors.black;
-                                  } else {
-                                    _backGroundIconColor = Colors.white;
-                                  }
-                                  setState(() {
-                                    _backGroundColor = change;
-                                  });
+                InkWell(
+                  onTap: (){
+                    showDialog(context: context, builder: (context){
+                      return AlertDialog(
+                        actions: [
+                          ElevatedButton(
+                              onPressed: (){
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text("Ok")
+                          )
+                        ],
+                        title: const Text("Escolha cor do fundo"),
+                        content: SingleChildScrollView(
+                          child: ColorPicker(
+                              pickerColor: _backGroundColor,
+                              onColorChanged: (change){
+                                var luminosidade = (change.red * 299 + change.green * 587 + change.blue * 114) / 1000;
+                                if(luminosidade > 127){
+                                  _backGroundIconColor = Colors.black;
+                                } else {
+                                  _backGroundIconColor = Colors.white;
                                 }
-                            ),
+                                setState(() {
+                                  _backGroundColor = change;
+                                });
+                              }
                           ),
-                        );
-                      });
-                    },
+                        ),
+                      );
+                    });
+                  },
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.075,
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    child: Icon(Icons.brush, color: _backGroundIconColor),
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  margin: const EdgeInsets.fromLTRB(0, 10, 0, 15),
                   height: MediaQuery.of(context).size.height * 0.3,
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width * 0.85,
                   decoration: BoxDecoration(
                       color: _boxColor,
                       borderRadius: BorderRadius.circular(25)
@@ -178,15 +206,14 @@ class _TesteState extends State<Teste> {
                 )
               ],
             ),
-            const SizedBox(height: 10),
             Container(
-              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              width: MediaQuery.of(context).size.width * 0.85,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.22,
+                    width: MediaQuery.of(context).size.width * 0.19,
                     height: MediaQuery.of(context).size.height * 0.13,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
@@ -299,11 +326,11 @@ class _TesteState extends State<Teste> {
                         _corFundo = false;
                         setState((){});
                       },
-                      icon: Icon(_icone1, size: 60, color: _icone1Color),
+                      icon: Icon(_icone1, size: 58, color: _icone1Color),
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.22,
+                    width: MediaQuery.of(context).size.width * 0.19,
                     height: MediaQuery.of(context).size.height * 0.13,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
@@ -416,11 +443,11 @@ class _TesteState extends State<Teste> {
                         _corFundo = false;
                         setState((){});
                       },
-                      icon: Icon(_icone2, size: 60, color: _icone2Color),
+                      icon: Icon(_icone2, size: 58, color: _icone2Color),
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.22,
+                    width: MediaQuery.of(context).size.width * 0.19,
                     height: MediaQuery.of(context).size.height * 0.13,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
@@ -533,11 +560,11 @@ class _TesteState extends State<Teste> {
                         _corFundo = false;
                         setState((){});
                       },
-                      icon: Icon(_icone3, size: 60, color: _icone3Color),
+                      icon: Icon(_icone3, size: 58, color: _icone3Color),
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.22,
+                    width: MediaQuery.of(context).size.width * 0.19,
                     height: MediaQuery.of(context).size.height * 0.13,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
@@ -650,9 +677,175 @@ class _TesteState extends State<Teste> {
                         _corFundo = false;
                         setState((){});
                       },
-                      icon: Icon(_icone4, size: 60, color: _icone4Color),
+                      icon: Icon(_icone4, size: 58, color: _icone4Color),
                     ),
                   ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.18,
+              width: MediaQuery.of(context).size.width * 0.85,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: _card1
+              ),
+              child: Row(
+                children: [
+                  const SizedBox(width: 15),
+                  Container(
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      width: MediaQuery.of(context).size.width * 0.25,
+                      margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                      child: InkWell(
+                        onTap: _getCard1,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            (_card1Image == null)
+                                ?Image.network("https://blog.iprocess.com.br/wp-content/uploads/2021/11/placeholder.png", fit: BoxFit.fitWidth)
+                                :Image.file(_card1Image!),
+                            const Align(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: [
+                                  SizedBox(width: 10),
+                                  Icon(Icons.image)
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(_card1Titulo, style: const TextStyle(fontSize: 24)),
+                          const SizedBox(width: 10),
+                          InkWell(
+                            onTap: (){
+
+                            },
+                            child: const Icon(Icons.edit),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Text(_card1Subtitulo, style: const TextStyle(fontSize: 18)),
+                          const SizedBox(width: 10),
+                          InkWell(
+                            onTap: (){
+
+                            },
+                            child: const Icon(Icons.edit),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  const Spacer(),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                        onPressed: (){
+
+                        },
+                        icon: const Icon(Icons.edit)
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.18,
+              width: MediaQuery.of(context).size.width * 0.85,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: _card2
+              ),
+              child: Row(
+                children: [
+                  const SizedBox(width: 15),
+                  Container(
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      width: MediaQuery.of(context).size.width * 0.25,
+                      margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                      child: InkWell(
+                        onTap: _getCard2,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            (_card2Image == null)
+                                ?Image.network("https://blog.iprocess.com.br/wp-content/uploads/2021/11/placeholder.png", fit: BoxFit.fitWidth)
+                                :Image.file(_card2Image!),
+                            const Align(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: [
+                                  SizedBox(width: 10),
+                                  Icon(Icons.image)
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(_card2Titulo, style: const TextStyle(fontSize: 24)),
+                          const SizedBox(width: 10),
+                          InkWell(
+                            onTap: (){
+
+                            },
+                            child: const Icon(Icons.edit),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Text(_card2Subtitulo, style: const TextStyle(fontSize: 18)),
+                          const SizedBox(width: 10),
+                          InkWell(
+                            onTap: (){
+
+                            },
+                            child: const Icon(Icons.edit),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  const Spacer(),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                        onPressed: (){
+
+                        },
+                        icon: const Icon(Icons.edit)
+                    ),
+                  )
                 ],
               ),
             ),
