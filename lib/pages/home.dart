@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tcc_bianca/pages/teste.dart';
 
@@ -14,15 +16,15 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Map<String, dynamic>> _textosCores = [
-  {"color": Colors.blueAccent, "cor": "Azul", "texto": "Utilizado em sua maioria como cor principal dos aplicativos, pode ser usado em botões que remetem ações positivas.", "tags": "contemplação, paz, paciência, emoções mais amenas e leves;"},
-  {"color": Colors.grey, "cor": "branco e cinza", "texto": "Utilizado como cor de fundo ou como cor para dar contraste.", "tags": "luminosidade, limpeza e tranquilidade"},
-  {"color": Colors.greenAccent, "cor": "verde", "texto": "Utilizado em botões que remetem ações positivas e elementos do site ou aplicativo, também pode ser usado como cor de fundo.", "tags": "cura, perseverança, natureza;"},
-  {"color": Colors.red, "cor": "vermelho", "texto": "Utilizado para ações que remetem perigo ou que demandam a atenção do usuário, como por exemplo um botão de excluir.", "tags": "paixão, fúria, violência, fome, todo tipo de sensação intensa"},
-  {"color": Colors.yellow, "cor": "Amarelo", "texto": "Utilizado em ícones ou em mensagens de aviso.", "tags": "alegria, relaxamento, felicidade;"},
-  {"color": Colors.orange, "cor": "Laranja", "texto": "Utilizado em ícones diversos, botões, é uma cor de destaque e complementar.", "tags": "bom humor, energia, equilíbrio;"},
-  {"color": Colors.black, "cor": "preto", "texto": "Utilizado em escrita ou ícones.", "tags": "elegância, riqueza, mistério, medo e anonimato"},
-  {"color": Colors.purple, "cor": "Violeta", "texto": "Utilizado como cor principal do aplicativo ou em ícones da tela.", "tags": "sensualidade, nobreza, mistério, transformação, a cor das descobertas."},
-  {"color": Colors.pink, "cor": "Rosa", "texto": "Utilizado em botões, pode ser usado como cor principal acompanhada de várias variações de degradê.", "tags": "delicadeza, romantismo e inocência"}
+  {"img": "assets/images/azul.png", "color": Colors.blueAccent, "cor": "Azul", "texto": "Utilizado em sua maioria como cor principal dos aplicativos, pode ser usado em botões que remetem ações positivas.", "tags": "contemplação, paz, paciência, emoções mais amenas e leves."},
+  {"img": "assets/images/cinza.png", "color": Colors.grey, "cor": "branco e cinza", "texto": "Utilizado como cor de fundo ou como cor para dar contraste.", "tags": "luminosidade, limpeza e tranquilidade."},
+  {"img": "assets/images/verde.png", "color": Colors.green, "cor": "verde", "texto": "Utilizado em botões que remetem ações positivas e elementos do site ou aplicativo, também pode ser usado como cor de fundo.", "tags": "cura, perseverança, natureza."},
+  {"img": "assets/images/vermmelho.png", "color": Colors.red, "cor": "vermelho", "texto": "Utilizado para ações que remetem perigo ou que demandam a atenção do usuário, como por exemplo um botão de excluir.", "tags": "paixão, fúria, violência, fome, todo tipo de sensação intensa."},
+  {"img": "assets/images/amarelo.png", "color": Colors.yellow, "cor": "Amarelo", "texto": "Utilizado em ícones ou em mensagens de aviso.", "tags": "alegria, relaxamento, felicidade."},
+  {"img": "assets/images/laranja.png", "color": Colors.orange, "cor": "Laranja", "texto": "Utilizado em ícones diversos, botões, é uma cor de destaque e complementar.", "tags": "bom humor, energia, equilíbrio."},
+  {"img": "assets/images/preto.png", "color": Colors.black, "cor": "preto", "texto": "Utilizado em escrita ou ícones.", "tags": "elegância, riqueza, mistério, medo e anonimato."},
+  {"img": "assets/images/roxo.png", "color": Colors.purple, "cor": "Violeta", "texto": "Utilizado como cor principal do aplicativo ou em ícones da tela.", "tags": "sensualidade, nobreza, mistério, transformação, a cor das descobertas."},
+  {"img": "assets/images/rosa.png", "color": Colors.pink, "cor": "Rosa", "texto": "Utilizado em botões, pode ser usado como cor principal acompanhada de várias variações de degradê.", "tags": "delicadeza, romantismo e inocência."}
   ];
 
   Widget pages(BuildContext context, int page){
@@ -45,6 +47,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onTap: (){
+
                 showDialog(context: context, builder: (context){
                   return AlertDialog(
                     title: Text(_textosCores[index]['cor']),
@@ -64,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                           const Text("Exemplos:"),
                           const SizedBox(height: 5),
                           (_textosCores[index]['cor'] == "Azul")
-                              ?Image.asset("assets/images/azul1.png")
+                              ?Image.asset(_textosCores[index]['img'])
                               :Container()
                         ],
                       ),
