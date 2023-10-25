@@ -912,7 +912,7 @@ class _TesteState extends State<Teste> {
                           width: MediaQuery.of(context).size.width * 0.25,
                           margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                           child: InkWell(
-                            onTap: _getCard1,
+                            onTap: _getCard2,
                             child: Stack(
                               alignment: Alignment.center,
                               children: [

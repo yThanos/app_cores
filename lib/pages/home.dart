@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                         onPressed: (){
                           Navigator.of(context).pop();
                         },
-                        child: Text("Fechar")
+                        child: const Text("Fechar")
                       )
                     ],
                     content: SingleChildScrollView(
