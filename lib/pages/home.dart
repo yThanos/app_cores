@@ -16,15 +16,15 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Map<String, dynamic>> _textosCores = [
-  {"img": "assets/images/azul.png", "color": Colors.blueAccent, "cor": "Azul", "texto": "Utilizado em sua maioria como cor principal dos aplicativos, pode ser usado em botões que remetem ações positivas.", "tags": "contemplação, paz, paciência, emoções mais amenas e leves."},
-  {"img": "assets/images/cinza.png", "color": Colors.grey, "cor": "branco e cinza", "texto": "Utilizado como cor de fundo ou como cor para dar contraste.", "tags": "luminosidade, limpeza e tranquilidade."},
-  {"img": "assets/images/verde.png", "color": Colors.green, "cor": "verde", "texto": "Utilizado em botões que remetem ações positivas e elementos do site ou aplicativo, também pode ser usado como cor de fundo.", "tags": "cura, perseverança, natureza."},
-  {"img": "assets/images/vermmelho.png", "color": Colors.red, "cor": "vermelho", "texto": "Utilizado para ações que remetem perigo ou que demandam a atenção do usuário, como por exemplo um botão de excluir.", "tags": "paixão, fúria, violência, fome, todo tipo de sensação intensa."},
-  {"img": "assets/images/amarelo.png", "color": Colors.yellow, "cor": "Amarelo", "texto": "Utilizado em ícones ou em mensagens de aviso.", "tags": "alegria, relaxamento, felicidade."},
-  {"img": "assets/images/laranja.png", "color": Colors.orange, "cor": "Laranja", "texto": "Utilizado em ícones diversos, botões, é uma cor de destaque e complementar.", "tags": "bom humor, energia, equilíbrio."},
-  {"img": "assets/images/preto.png", "color": Colors.black, "cor": "preto", "texto": "Utilizado em escrita ou ícones.", "tags": "elegância, riqueza, mistério, medo e anonimato."},
-  {"img": "assets/images/roxo.png", "color": Colors.purple, "cor": "Violeta", "texto": "Utilizado como cor principal do aplicativo ou em ícones da tela.", "tags": "sensualidade, nobreza, mistério, transformação, a cor das descobertas."},
-  {"img": "assets/images/rosa.png", "color": Colors.pink, "cor": "Rosa", "texto": "Utilizado em botões, pode ser usado como cor principal acompanhada de várias variações de degradê.", "tags": "delicadeza, romantismo e inocência."}
+  {"img": "assets/images/azul.jpg", "color": Colors.blueAccent, "cor": "Azul", "texto": "Utilizado em sua maioria como cor principal dos aplicativos, pode ser usado em botões que remetem ações positivas.", "tags": "contemplação, paz, paciência, emoções mais amenas e leves."},
+  {"img": "assets/images/cinza.jpg", "color": Colors.grey, "cor": "branco e cinza", "texto": "Utilizado como cor de fundo ou como cor para dar contraste.", "tags": "luminosidade, limpeza e tranquilidade."},
+  {"img": "assets/images/verde.jpg", "color": Colors.green, "cor": "verde", "texto": "Utilizado em botões que remetem ações positivas e elementos do site ou aplicativo, também pode ser usado como cor de fundo.", "tags": "cura, perseverança, natureza."},
+  {"img": "assets/images/vermelho.jpg", "color": Colors.red, "cor": "vermelho", "texto": "Utilizado para ações que remetem perigo ou que demandam a atenção do usuário, como por exemplo um botão de excluir.", "tags": "paixão, fúria, violência, fome, todo tipo de sensação intensa."},
+  {"img": "assets/images/amarelo.jpg", "color": Colors.yellow, "cor": "Amarelo", "texto": "Utilizado em ícones ou em mensagens de aviso.", "tags": "alegria, relaxamento, felicidade."},
+  {"img": "assets/images/laranja.jpg", "color": Colors.orange, "cor": "Laranja", "texto": "Utilizado em ícones diversos, botões, é uma cor de destaque e complementar.", "tags": "bom humor, energia, equilíbrio."},
+  {"img": "assets/images/preto.jpg", "color": Colors.black, "cor": "preto", "texto": "Utilizado em escrita ou ícones.", "tags": "elegância, riqueza, mistério, medo e anonimato."},
+  {"img": "assets/images/roxo.jpg", "color": Colors.purple, "cor": "Violeta", "texto": "Utilizado como cor principal do aplicativo ou em ícones da tela.", "tags": "sensualidade, nobreza, mistério, transformação, a cor das descobertas."},
+  {"img": "assets/images/rosa.jpg", "color": Colors.pink, "cor": "Rosa", "texto": "Utilizado em botões, pode ser usado como cor principal acompanhada de várias variações de degradê.", "tags": "delicadeza, romantismo e inocência."}
   ];
 
   Widget pages(BuildContext context, int page){
@@ -66,9 +66,7 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(height: 5),
                           const Text("Exemplos:"),
                           const SizedBox(height: 5),
-                          (_textosCores[index]['cor'] == "Azul")
-                              ?Image.asset(_textosCores[index]['img'])
-                              :Container()
+                          Image.asset(_textosCores[index]['img'])
                         ],
                       ),
                     ),
@@ -91,7 +89,14 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Explicação de como é o teste e taus uma imagem mostrando fecho"),
+          const Text("Nessa tela você vai poder colorir e inserir imagens de sua preferência, faça combinações de acordo com o que aprendeu sobre as cores, na tela anterior.", style: TextStyle(fontSize: 22, color: Colors.white), textAlign: TextAlign.center),
+          const SizedBox(height: 25),
+          const Text("Para colorir a tela é necessário clicar no pincel disponível.", style: TextStyle(fontSize: 18, color: Colors.white), textAlign: TextAlign.center),
+          const Icon(Icons.brush, color: Colors.white),
+          const Text("Para escrever clique na caneta.", style: TextStyle(fontSize: 18, color: Colors.white), textAlign: TextAlign.center),
+          const Icon(Icons.edit, color: Colors.white),
+          const Text("Para inserir imagens clique nas imagens.", style: TextStyle(fontSize: 18, color: Colors.white), textAlign: TextAlign.center),
+          const Icon(Icons.image, color: Colors.white),
           SizedBox(
             width: 135,
             child: ElevatedButton(
@@ -111,7 +116,36 @@ class _HomePageState extends State<HomePage> {
     );
     }
     if(page == 2) {
-      return Container();
+      return Container(
+        padding: const EdgeInsets.all(10),
+        child: const SingleChildScrollView(
+          child: Column(
+            children: [
+              Text("Esse aplicativo foi desenvolvido com o intuito de complementar o trabalho de conclusão do curso de sistemas para internet, cujo tema é Psicologia das cores na produção de interfaces digitais.",
+                  style: TextStyle(fontSize: 18)
+              ),
+              SizedBox(height: 10),
+              Image(image: AssetImage("assets/images/divertidamente.jpg")),
+              SizedBox(height: 10),
+              Text("O trabalho apresentou como referência de cores o filme divertidamente, cada personagem foi usado para explicar sobre sua cor e como a mesma pode refletir nos usuários.",
+                  style: TextStyle(fontSize: 18)
+              ),
+              SizedBox(height: 15),
+              Text(" Este trabalho buscou realizar um estudo sobre a psicologia das cores e como ela pode ser usada de maneira eficaz em interfaces digitais, de modo a minimizar desconfortos e dúvidas que possam transmitir informações equivocadas ao usuário.",
+                  style: TextStyle(fontSize: 18)
+              ),
+              SizedBox(height: 15),
+              Text("Este estudo é relevante uma vez que compreender os efeitos causados pelo uso de cores, permite identificar possíveis estratégias para tornar mais efetiva a experiência do usuário em interfaces digitais.",
+                  style: TextStyle(fontSize: 18)
+              ),
+              SizedBox(height: 15),
+              Text("Para maiores detalhes o trabalho está disponível abaixo.",
+                  style: TextStyle(fontSize: 18)
+              )
+            ],
+          ),
+        )
+      );
     }
     return Container();
   }
@@ -125,18 +159,21 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, color: Colors.white),
             label: "Home"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.edit_note),
+            icon: Icon(Icons.edit_note, color: Colors.white),
             label: "Teste"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.question_mark),
-            label: "Sobre o app"
+            icon: Icon(Icons.question_mark, color: Colors.white),
+            label: "Sobre o app",
           )
         ],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        backgroundColor: Colors.blue,
         currentIndex: _selectedIndex,
         onTap: (selected){
           setState(() {
