@@ -15,12 +15,12 @@ class _HomePageState extends State<HomePage> {
 
   final List<Map<String, dynamic>> _textosCores = [
   {"img": "assets/images/azul.jpg", "color": Colors.blueAccent, "cor": "Azul", "texto": "Utilizado em sua maioria como cor principal dos aplicativos, pode ser usado em botões que remetem ações positivas.", "tags": "contemplação, paz, paciência, emoções mais amenas e leves."},
-  {"img": "assets/images/cinza.jpg", "color": Colors.grey, "cor": "branco e cinza", "texto": "Utilizado como cor de fundo ou como cor para dar contraste.", "tags": "luminosidade, limpeza e tranquilidade."},
-  {"img": "assets/images/verde.jpg", "color": Colors.green, "cor": "verde", "texto": "Utilizado em botões que remetem ações positivas e elementos do site ou aplicativo, também pode ser usado como cor de fundo.", "tags": "cura, perseverança, natureza."},
-  {"img": "assets/images/vermelho.jpg", "color": Colors.red, "cor": "vermelho", "texto": "Utilizado para ações que remetem perigo ou que demandam a atenção do usuário, como por exemplo um botão de excluir.", "tags": "paixão, fúria, violência, fome, todo tipo de sensação intensa."},
+  {"img": "assets/images/cinza.jpg", "color": Colors.grey, "cor": "Branco e cinza", "texto": "Utilizado como cor de fundo ou como cor para dar contraste.", "tags": "luminosidade, limpeza e tranquilidade."},
+  {"img": "assets/images/verde.jpg", "color": Colors.green, "cor": "Verde", "texto": "Utilizado em botões que remetem ações positivas e elementos do site ou aplicativo, também pode ser usado como cor de fundo.", "tags": "cura, perseverança, natureza."},
+  {"img": "assets/images/vermelho.jpg", "color": Colors.red, "cor": "Vermelho", "texto": "Utilizado para ações que remetem perigo ou que demandam a atenção do usuário, como por exemplo um botão de excluir.", "tags": "paixão, fúria, violência, fome, todo tipo de sensação intensa."},
   {"img": "assets/images/amarelo.jpg", "color": Colors.yellow, "cor": "Amarelo", "texto": "Utilizado em ícones ou em mensagens de aviso.", "tags": "alegria, relaxamento, felicidade."},
   {"img": "assets/images/laranja.jpg", "color": Colors.orange, "cor": "Laranja", "texto": "Utilizado em ícones diversos, botões, é uma cor de destaque e complementar.", "tags": "bom humor, energia, equilíbrio."},
-  {"img": "assets/images/preto.jpg", "color": Colors.black, "cor": "preto", "texto": "Utilizado em escrita ou ícones.", "tags": "elegância, riqueza, mistério, medo e anonimato."},
+  {"img": "assets/images/preto.jpg", "color": Colors.black, "cor": "Preto", "texto": "Utilizado em escrita ou ícones.", "tags": "elegância, riqueza, mistério, medo e anonimato."},
   {"img": "assets/images/roxo.jpg", "color": Colors.purple, "cor": "Violeta", "texto": "Utilizado como cor principal do aplicativo ou em ícones da tela.", "tags": "sensualidade, nobreza, mistério, transformação, a cor das descobertas."},
   {"img": "assets/images/rosa.jpg", "color": Colors.pink, "cor": "Rosa", "texto": "Utilizado em botões, pode ser usado como cor principal acompanhada de várias variações de degradê.", "tags": "delicadeza, romantismo e inocência."}
   ];
